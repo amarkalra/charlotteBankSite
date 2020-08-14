@@ -1,6 +1,34 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
+<script>
+function UserAction() {	
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+
+         if (this.readyState == 4 && this.status == 200) {
+		       var jsonResponse = 	JSON.parse(xhttp.responseText);
+			 document.getElementById('test').innerHTML="<p style=\"color: white\">Your Application has been approved, Your card will be shipped to you in 5 Business Days</p>";
+			 
+         }
+    };
+
+
+    xhttp.open("POST", "https://4pewm31ifl.execute-api.us-west-2.amazonaws.com/prod/getcustomerdata", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+	var customerData = new Object();
+	var ssn = document.getElementById('ssn').value;
+
+	customerData.ssn=ssn;
+       xhttp.send(JSON.stringify(customerData));
+	document.getElementById('test').innerHTML="<p style=\"color: white\">Your Application is being processed, please don't refresh your browser'</p>";
+
+
+}
+</script>
+
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -43,8 +71,8 @@
                         <div class="row align-items-center">
                             <div class="col-xl-3 col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html">
-                                        <img src="img/logo.png" alt="">
+                                    <a href="index.html" >
+										<u> <p style="font-family:arial ;font-size:30px; color:white""><i>Charlotte Bank</i></p></u>
                                     </a>
                                 </div>
                             </div>
@@ -97,58 +125,57 @@
 
     <!-- slider_area_start -->
     <div class="slider_area">
-        <div class="single_slider  d-flex align-items-center slider_bg_1">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-7 col-md-6">
-                        <div class="slider_text">
-                            <h3 class="wow fadeInRight" data-wow-duration="1s" data-wow-delay=".1s">Get Loan for your Business growth or startup</h3>
-                            <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">
-                                <a href="#" class="boxed-btn3">How it Works</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-6">
-                        <div class="payment_form white-bg wow fadeInDown" data-wow-duration="1.2s" data-wow-delay=".2s">
-                            <div class="info text-center">
-                                <h4>How much do you want?</h4>
-                                <p>We provide online instant cash loans with quick</p>
-                            </div>
-                            <div class="form">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="single_input">
-                                            <select class="wide">
-                                                <option data-display="Amount">Amount</option>
-                                                <option value="1">$10</option>
-                                                <option value="2">$40</option>
-                                                <option value="3">$50</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="single_input">
-                                            <select class="wide">
-                                                <option data-display="Month">Month</option>
-                                                <option value="1">3 Month</option>
-                                                <option value="2">6 Month</option>
-                                                <option value="3">9 Month</option>
-                                                <option value="4">12 Month</option>
-                                            </select>
-                                         </div>
-                                    </div>
+        <div class="apply_form_area slider_bg_1">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form action="#" class="apply_form" id="test">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="apply_info_text text-center">
+                                    <p style="color: white">How much do you want?</p>
+                                    <p style="color: white">We provide online instant cash loans with quick approval that suit your term length</p>
                                 </div>
                             </div>
-                            <p>You have to pay: <span>$0</span></p>
-                            <div class="submit_btn">
-                                <button class="boxed-btn3" type="submit">Continue</button>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <input type="text" class="wide" placeholder="Your name">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <input type="text" id="ssn" placeholder="SSN">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <input type="text" placeholder="Household Income">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="single_field">
+                                    <select class="wide">
+                                        <option data-display="Choose Credit Card">CB Cash</option>
+                                        <option value="1">CB Travel</option>
+                                        <option value="2">CB Dinning Perks</option>
+                                      </select>
+                                </div>
+                            </div>
+                            
+        
+                            <div class="col-md-12">
+                                <div class="submit_btn">
+									<button type="submit" onclick="javascript:UserAction()">call</button>                                
+								</div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
+</div>
     <!-- slider_area_end -->
 
     <!-- service_area_start  -->
@@ -172,14 +199,14 @@
                             </div>
                         </div>
                         <div class="info text-center">
-                            <span>Home Loan</span>
+                            <span>Credit Cards</span>
                             <h3>$3000-$10000</h3>
                         </div>
                         <div class="service_content">
                             <ul>
-                                <li> Borrow - $350 over 3 months </li>
-                                <li> Interest rate - 292% pa fixed</li>
-                                <li>Total amount payable - $525.12</li>
+                                <li> Cash Back - 1% </li>
+                                <li> Interest rate - 8.9% pa fixed</li>
+                                <li>Transfer Balances</li>
                                 <li>Representative - 1,286% APR</li>
                             </ul>
                             <div class="apply_btn">
@@ -207,7 +234,7 @@
                                 <li>Representative - 1,286% APR</li>
                             </ul>
                             <div class="apply_btn">
-                                <button class="boxed-btn3" type="submit">Apply Now</button>
+                                <button class="boxed-btn3" type="submit" >Apply Now</button>
                             </div>
                         </div>
                     </div>
@@ -391,7 +418,7 @@
     <!-- testimonial_area  -->
     <div class="testimonial_area  ">
         <div class="container">
-            <div class="row">
+            <div id = "test" class="row">
                 <div class="col-xl-12">
                     <div class="testmonial_active owl-carousel">
                         <div class="single_carousel">
