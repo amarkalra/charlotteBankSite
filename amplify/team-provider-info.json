@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-charlottebanksite-dev-163935-authRole",
+            "UnauthRoleArn": "arn:aws:iam::922998324571:role/amplify-charlottebanksite-dev-163935-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::922998324571:role/amplify-charlottebanksite-dev-163935-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-charlottebanksite-dev-163935-deployment",
+            "UnauthRoleName": "amplify-charlottebanksite-dev-163935-unauthRole",
+            "StackName": "amplify-charlottebanksite-dev-163935",
+            "StackId": "arn:aws:cloudformation:us-west-2:922998324571:stack/amplify-charlottebanksite-dev-163935/4263f590-e7dc-11ea-b633-0af4fb34eba2",
+            "AmplifyAppId": "dw4iw7v5ahfcq"
+        },
+        "categories": {
+            "auth": {
+                "cognitob3e63129": {}
+            }
+        }
+    }
+}
